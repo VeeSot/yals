@@ -55,6 +55,7 @@ class Entity(db.DynamicDocument):
         for entity in all_entities:
             entity.reset_frequencies()
             entity.reset_channels()
+            entity.save()
 
     @classmethod
     def add(cls, data_set: str):
