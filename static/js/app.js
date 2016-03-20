@@ -9,7 +9,7 @@
                     r = new FileReader();
                 r.onloadend = function (e) {
                     var learnData = e.target.result;
-                    $http.post('/add_learn', {learn_data: learnData}).success(
+                    $http.post('/add_learn', {data: learnData}).success(
                         function (response) {
 
                         })
@@ -22,7 +22,7 @@
                     r = new FileReader();
                 r.onloadend = function (e) {
                     var testData = e.target.result;
-                    $http.post('/check_test', {testDara: testData}).success(
+                    $http.post('/check_test', {data: testData}).success(
                         function (response) {
                             $scope.pairs = response.pairs;
                         });

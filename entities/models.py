@@ -59,8 +59,7 @@ class Entity(db.DynamicDocument):
 
     @classmethod
     def add(cls, data_set: str):
-        # Сразу складываем в строчку  приводя  к унифицированой последовательности вида 1110111
-        sequence = ''.join(re.findall(re_sequence, data_set))
+        sequence = Entity.data_set_to_sequence(data_set)
         channel = int(re.findall(re_channel, data_set)[0])  # Узнаем номер канала,что учитывать частотность по нему.
         # Возможно такая последовательность уже есть у нас в БД, поэтому стоит проверить
         entities = Entity.objects.filter(sequence=sequence)
@@ -75,6 +74,12 @@ class Entity(db.DynamicDocument):
         frequencies[channel] += 1  # Увеличим счетчик "попаданий" на канал
         entity.set_frequencies(frequencies)
         entity.save()
+
+    @classmethod
+    def data_set_to_sequence(cls, data_set: str) -> str:
+        # Сразу складываем в строчку  приводя  к унифицированой последовательности вида 1110111
+        sequence = ''.join(re.findall(re_sequence, data_set))
+        return sequence
 
     @classmethod
     def get_channel_by_key(cls, key: str) -> int:
