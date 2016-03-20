@@ -1,0 +1,49 @@
+
+
+{% extends "bootstrap/base.html" %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+{% endblock %}
+{% block content %}
+
+
+<div class="col-lg-12 learn">
+    <label for="learning_data">Выберите файл для обучения</label>
+
+    <div class="input-group">
+        <input type="file" id="learning_data" placeholder="Выберите обучающий файл"
+               required="required"
+               title="Выберите обучающий файл" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Загрузить</button>
+      </span>
+    </div>
+</div>
+
+<div class="col-lg-12 test">
+    <label for="testing_data">Выберите файл для тестирования</label>
+
+    <div class="input-group">
+        <input type="file" id="testing_data" placeholder="Выберите тестовый файл"
+               required="required"
+               title="Выберите тестовый файл" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Загрузить</button>
+      </span>
+    </div>
+</div>
+
+<br>
+<div class="col-lg-12 result">
+    <ul>
+
+    </ul>
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-danger reset_db" type="button">Сбросить всю базу распознаний</button>
+      </span>
+    </div>
+</div>
+
+{% endblock %}

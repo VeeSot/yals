@@ -1,0 +1,19 @@
+.test, .result, .learn {
+    margin: 20px;
+}
+
+body {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    text-align: center;
+}
+
+label {
+    text-align: left;
+}
+
+.btn.btn-danger.reset_db {
+    display: block;
+    width: 100%;
+}
