@@ -1,22 +1,25 @@
-
-
 {% extends "bootstrap/base.html" %}
+{% block body_attribs %} ng-app="yals" ng-controller="yals_controller"{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<script type="text/javascript" src="../static/js/app.js"></script>
+{{super()}}
+{% endblock %}
 {% block styles %}
 {{super()}}
 <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
 {% endblock %}
-{% block content %}
 
+{% block content %}
 
 <div class="col-lg-12 learn">
     <label for="learning_data">Выберите файл для обучения</label>
 
     <div class="input-group">
         <input type="file" id="learning_data" placeholder="Выберите обучающий файл"
-               required="required"
                title="Выберите обучающий файл" class="form-control">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Загрузить</button>
+        <button class="btn btn-default" type="button" ng-click="addLearnData()">Загрузить</button>
       </span>
     </div>
 </div>
@@ -26,22 +29,26 @@
 
     <div class="input-group">
         <input type="file" id="testing_data" placeholder="Выберите тестовый файл"
-               required="required"
                title="Выберите тестовый файл" class="form-control">
       <span class="input-group-btn">
-        <button class="btn btn-primary" type="button">Загрузить</button>
+        <button class="btn btn-primary" type="button" ng-click="checkTestData()">Загрузить</button>
       </span>
     </div>
 </div>
 
 <br>
 <div class="col-lg-12 result">
-    <ul>
 
+    <ul class="pairs">
+        <li class="pair" ng-repeat="pair in pairs">
+            {% raw %}{{ pair.key }} => {{ pair.value }}{% endraw %}
+        </li>
     </ul>
+
+
     <div class="input-group">
       <span class="input-group-btn">
-        <button class="btn btn-danger reset_db" type="button">Сбросить всю базу распознаний</button>
+        <button class="btn btn-danger reset_db" type="button" ng-click="dropDb()">Сбросить всю базу распознаний</button>
       </span>
     </div>
 </div>
