@@ -95,6 +95,7 @@ def get_most_possible_channel(sequence: str) -> int:
         for channel in channels:
             freq = freq_of_channel.get(channel)  # Количество "соседей" на этом канале
             if freq > current_freq:
+                current_freq = freq
                 current_channel = channel
         return current_channel
     else:
