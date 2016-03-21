@@ -2,3 +2,4 @@ Flask
 flask-mongoengine
 flask-bootstrap
 Flask-Script
+python-levenshtein
