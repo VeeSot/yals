@@ -45,8 +45,8 @@ class EntityTest(MethodView):
 
 class DataBaseView(MethodView):
     def delete(self):
-        Records.reset()
-        response = {'status': 'Database was reset'}
+        Records.drop_all()
+        response = {'status': 'Database was dropped'}
         return flask.jsonify(**response)
 
 

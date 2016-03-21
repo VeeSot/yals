@@ -50,12 +50,10 @@ class Entity(db.DynamicDocument):
             entity.update_channel()
 
     @classmethod
-    def reset(cls):
+    def drop_all(cls):
         all_entities = Entity.objects.all()
         for entity in all_entities:
-            entity.reset_frequencies()
-            entity.reset_channels()
-            entity.save()
+            entity.delete()
 
     @classmethod
     def add(cls, data_set: str):
